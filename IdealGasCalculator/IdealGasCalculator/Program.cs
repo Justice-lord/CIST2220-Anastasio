@@ -61,8 +61,23 @@ class IdealGasCalculator
             Console.WriteLine();
         }
     }
+    private static double GetMoleWeightFromName(string gasName, string[] gasNames, double[] moleWeights, int countGases)
+    {
+        for (int i =0; i < countGases; i++)
+        {
+            if (string.Equals(gasNames[i], gasName, StringComparison.OrdinalIgnoreCase))
+            {
+                return moleWeights[i];
+            }
+        }
 
-    //private static double GetMoleWeightFromName(string gasName, string[] gasNames, double[] moleWeights, int countGases)
+        return -1;
+    }
+
+    private static double GetPressure(double mass)
+    {
+
+    }
     
 
     
@@ -80,5 +95,11 @@ class IdealGasCalculator
         GetMoleWeights(filePath, out gasNames, out moleWeights, out count);
 
         DisplayGasNames(gasNames, count);
+
+        /* test
+        string userGas = "butane";
+        double userMole =GetMoleWeightFromName(userGas, gasNames,moleWeights, count);
+        // expected result 58.124
+        Console.WriteLine($"\n{userMole}");*/
     }
 }
