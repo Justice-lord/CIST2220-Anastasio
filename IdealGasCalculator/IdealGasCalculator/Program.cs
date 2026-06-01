@@ -3,17 +3,16 @@
  * Date: 5/30/2026*/
 
 class IdealGasCalculator
-{
-    // header creation and format
+{ 
     static void WriteHeader()
     {
+        // header creation and format
         Console.WriteLine("Programmer: Tucker Anastasio\nProgram: Ideal Gas Calculator\n" +
             "Objective: Find pressure using the ideal gas equation.\n");
     }
-
-    // load csv data into arrays
     static void GetMoleWeights(string filePath, out string[] gasNames, out double[] moleWeights, out int count)
     {
+        // load csv data into arrays
         // using lists to not force an array size
         List<string> names = new List<string>();
         List<double> moles = new List<double>();
@@ -63,25 +62,54 @@ class IdealGasCalculator
     }
     private static double GetMoleWeightFromName(string gasName, string[] gasNames, double[] moleWeights, int countGases)
     {
+        // search through Gas names array to find match to user input
         for (int i =0; i < countGases; i++)
         {
+            // allows search to be in any case to match
             if (string.Equals(gasNames[i], gasName, StringComparison.OrdinalIgnoreCase))
             {
                 return moleWeights[i];
             }
         }
-
+        // return if gas not found
         return -1;
     }
 
-    private static double GetPressure(double mass)
+    private static double GetPressure(double mass, double vol, double temp, double moleWeight)
     {
+        // get pressure in pascals given user input
+        // convert to metric version of ideal gas law
+        double molesOfGas = NumberOfMoles(mass, moleWeight);
+        double degreeKelvin = CelsiusToKelvin(temp);
 
+        return (molesOfGas * 8.3145 * degreeKelvin) / vol;
     }
-    
 
-    
-    
+    static double NumberOfMoles(double mass, double moleWeight)
+    {
+        // get number of moles using mole weight and user input
+        return mass / moleWeight;
+    }
+
+    static double CelsiusToKelvin(double celsius)
+    {
+        // convert user celsius to kelvin
+        return celsius + 273.15;
+    }
+
+    private static void DisplayPressure(double pressure)
+    {
+        // display pressure results to the user
+        double psi = PaToPsi(pressure);
+        Console.WriteLine($"\nThe pressure in Pascals is {pressure} and the pressure in PSI is {psi}");
+    }
+
+    static double PaToPsi(double pascals)
+    {
+        // convert pascals to psi
+        return pascals / 6894.757;
+    }
+
     static void Main(string[] args)
     {
         WriteHeader();
@@ -101,5 +129,47 @@ class IdealGasCalculator
         double userMole =GetMoleWeightFromName(userGas, gasNames,moleWeights, count);
         // expected result 58.124
         Console.WriteLine($"\n{userMole}");*/
+
+        // do another loop for user to retry with different inputs
+        string doAnother;
+        do
+        {
+            // prompt user to enter gas
+            Console.Write("\nEnter Gas name from list above: ");
+            string userGas = Console.ReadLine();
+
+            double userMole = GetMoleWeightFromName(userGas, gasNames, moleWeights, count);
+
+            // check to make sure gas is on list
+            if (userMole == -1)
+            {
+                Console.WriteLine("Error: Gas not found.");
+
+                Console.Write("\nDo another (Y/N)?");
+                doAnother = Console.ReadLine();
+
+                continue;
+            }
+
+            // user prompts for entering ideal gas calc info
+            Console.Write("Enter volume in cubic meters: ");
+            double vol = double.Parse(Console.ReadLine());
+
+            Console.Write("Enter mass in grams: ");
+            double mass = double.Parse(Console.ReadLine());
+
+            Console.Write("Enter tempeture in Celsius: ");
+            double temp = double.Parse(Console.ReadLine());
+
+            // calc and display pressure to user
+            double pascals = GetPressure(mass, vol, temp, userMole);
+            DisplayPressure(pascals);
+
+            Console.Write("\nDo another (Y/N)? ");
+            doAnother = Console.ReadLine();
+
+        } while (doAnother.ToUpper() == "Y");
+
+        Console.WriteLine("\nThanks for using my program.");
     }
 }
