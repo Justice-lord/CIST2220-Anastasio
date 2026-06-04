@@ -9,6 +9,7 @@ namespace StudentClassDemo
 {
     class Student
     {
+        public static string[] majors = new string[] { "Programming", "Business", "Art History" };
         // fields private
         private string major;
         private string studentLastName;
@@ -106,7 +107,7 @@ namespace StudentClassDemo
 
         public string GetSummary()
         {
-            return studentFisrtName + " " + studentLastName + " \n" + studentNumber + " Average: " + average;
+            return studentFisrtName + " " + studentLastName + " " + major +" \n" + studentNumber + " Average: " + average;
         }
 
         private void Calc()

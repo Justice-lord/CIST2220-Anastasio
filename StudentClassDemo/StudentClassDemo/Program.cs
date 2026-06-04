@@ -19,8 +19,14 @@ namespace StudentClassDemo
                 st.SetStudentFirstName(firstName);
                 string lastname = GetInput("Last Name");
                 st.SetStudentLastName(lastname);
-                string major = GetInput("Major");
-                st.SetMajor(major);
+                Console.WriteLine("Majors: ");
+                for(int i=0;i<Student.majors.Length;++i)
+                {
+                    Console.WriteLine((i + 1).ToString() + Student.majors[i]);
+                }
+                int majorIndex = int.Parse(GetInput("Majors"))-1;
+                //string major = GetInput("Major");
+                st.SetMajor(Student.majors[majorIndex]);
                 string studentNum = GetInput("Student Number");
                 st.SetStudentNumber(studentNum);
                 int score1 = int.Parse(GetInput("Score 1"));
