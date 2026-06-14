@@ -21,6 +21,40 @@
             Employee employee2 = hourEmployee;
 
             Console.WriteLine($"emp2.GetPaySummary: {employee2.PaySummary}");
+
+            Employee emp = new Employee();
+            emp.EmpNum =3;
+            emp.FirstName = "Jobs";
+            emp.LastName = "Steve";
+
+            Console.WriteLine($"emp.GetHashCode: {emp.GetHashCode()}");
+            Console.WriteLine($"emp.GetType: {emp.GetType()}");
+            Console.WriteLine($"emp.ToString: {emp.ToString()}");
+
+            HourlyEmployee hourEmp = new HourlyEmployee();
+            hourEmp.EmpNum = 4;
+            hourEmp.FirstName = "Gates";
+            hourEmp.LastName = "Bill";
+            hourEmp.HourlyRate = 15.00M;
+
+            Console.WriteLine($"hourEmp.GetHashCde: {hourEmp.GetHashCode()}");
+            Console.WriteLine($"hourEmp.GetType: {hourEmp.GetType()}");
+            Console.WriteLine($"hourEmp.ToString: {hourEmp.ToString()}");
+
+            object athing = hourEmp;
+            Console.WriteLine("hourEmp.ToString: " + athing);
+
+            if (athing is HourlyEmployee)
+            {
+                HourlyEmployee unboxedEmp = (HourlyEmployee)athing;
+                Console.WriteLine("First Name: " + unboxedEmp.FirstName);
+            }
+
+            if (athing is HourlyEmployee)
+            {
+                Employee unboxedEmp = (Employee)athing;
+                Console.WriteLine("First Name: " + unboxedEmp.LastName);
+            }
         }
     }
 }

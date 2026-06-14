@@ -16,5 +16,10 @@ namespace HRManager
         {
             get { return "No pay for base class employee."; }
         }
+
+        public override string ToString()
+        {
+            return EmpNum + " " + FirstName + " " + LastName;
+        }
     }
 }

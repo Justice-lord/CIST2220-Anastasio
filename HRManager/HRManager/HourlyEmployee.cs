@@ -19,5 +19,10 @@ namespace HRManager
         {
             get { return $"This employee is payed {HourlyRate} per hour"; }
         }
+
+        public override string ToString()
+        {
+            return base.ToString() +" Hourly Employee";
+        }
     }
 }
