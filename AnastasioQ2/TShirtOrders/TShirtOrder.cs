@@ -39,8 +39,9 @@ namespace TShirtOrders
         private int numColors;
         public int NumColors
         {
-            get { return NumColors; }
-            set { NumColors = value; Calc(); }
+            // TA fixed to use fields
+            get { return numColors; }
+            set { numColors = value; Calc(); }
         }
 
         private int numShirts;
@@ -54,7 +55,7 @@ namespace TShirtOrders
         private void Calc()
         {
             // TA fixed type mismatch
-            Price = numShirts * ((decimal)numColors * 2.25m + (decimal)printAreaInSqIn * .05m);
+            Price = NumShirts * ((decimal)NumColors * 2.25m + (decimal)PrintAreaInSqIn * .05m);
         }
         public override string ToString()
         {
