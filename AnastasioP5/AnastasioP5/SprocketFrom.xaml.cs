@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*Programmer: Tucker Anastasio (tanastasio@student.cnm.edu)
+ Purpose: Sprocket Order App
+Date : 6/21/2026*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +23,20 @@ namespace AnastasioP5
     /// </summary>
     public partial class SprocketFrom : Window
     {
+        /// <summary>
+        /// Gets a new Sprocket item
+        /// </summary>
         public Sprocket NewSprocket { get; private set; }
         public SprocketFrom()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Adds Sprocket item to ListBox 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             int id =int.Parse(tbxItemID.Text);
@@ -52,6 +64,11 @@ namespace AnastasioP5
             DialogResult = true;
         }
 
+        /// <summary>
+        /// Cancels the dialog resulting in nothing happening
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

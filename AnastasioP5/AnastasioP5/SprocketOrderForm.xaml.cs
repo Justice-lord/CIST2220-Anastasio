@@ -27,6 +27,11 @@ namespace AnastasioP5
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Open Sprocket Form dialog and add item to Listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new SprocketFrom();
@@ -42,6 +47,11 @@ namespace AnastasioP5
 
         }
 
+        /// <summary>
+        /// Open a confirm dialog and delete item from Listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             if (lbxorders.SelectedItem != null)
@@ -55,6 +65,11 @@ namespace AnastasioP5
             }
         }
 
+        /// <summary>
+        /// Open a file dialog to save a formatted block of text to a text file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             Address addr = new Address();
@@ -94,6 +109,11 @@ namespace AnastasioP5
             }
         }
 
+        /// <summary>
+        /// Collapse the Address section of form if local pickup is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void chxLocalPickup_Click(object sender, RoutedEventArgs e)
         {
             if (chxLocalPickup.IsChecked == true)
