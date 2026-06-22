@@ -1,0 +1,9 @@
+Name: Tucker, # of Items: 3, Price: 11.00, Address: 1234 street rd ne, alb, nm, 87111
+
+
+Order#: 1, Material: Steel, Amount: 10, # of Teeth: 10, Price: 5.00
+
+Order#: 2, Material: Aluminum, Amount: 10, # of Teeth: 10, Price: 4.00
+
+Order#: 3, Material: Plastic, Amount: 10, # of Teeth: 10, Price: 2.00
+

@@ -1,0 +1,5 @@
+Name: Tucker, # of Items: 1, Price: 5.00, Address: Local Pickup
+
+
+Order#: 1, Material: Steel, Amount: 10, # of Teeth: 10, Price: 5.00
+
