@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExpenseTracker.Views.AddTransactionPage"
+             Title="Add Transaction">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry Placeholder="Amount"
+               Keyboard="Numeric"
+               Text="{Binding Amount}"/>
+
+        <Entry Placeholder="Category"
+               Text="{Binding Category}"/>
+
+        <Entry Placeholder="Description"
+               Text="{Binding Description}"/>
+
+        <DatePicker Date="{Binding Date}"/>
+
+        <Picker SelectedItem="{Binding TransactionType}">
+            <Picker.Items>
+                <x:String>Expense</x:String>
+                <x:String>Income</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Button Text="Save"
+                Command="{Binding SaveTransactionCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>
