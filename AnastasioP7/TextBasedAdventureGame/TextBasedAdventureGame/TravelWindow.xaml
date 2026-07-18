@@ -1,0 +1,121 @@
+﻿<Window x:Class="TextBasedAdventureGame.TravelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Text Based Adventure Game"
+        Width="900"
+        Height="650"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label 
+            Content="Location Description:" 
+            Grid.Row="0" 
+            Grid.Column="0"
+            Grid.ColumnSpan="3"/>
+
+        <TextBox
+            x:Name="tbxDescription"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            IsReadOnly="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"/>
+
+        <Label
+            Content="Select an item to search or take:"
+            Grid.Row="2"
+            Grid.Column="0"/>
+
+        <Label
+            Content="Inventory: Select item to drop"
+            Grid.Row="2"
+            Grid.Column="2"/>
+
+        <ListBox
+            x:Name="lbxLocationItems"
+            Grid.Row="3"
+            Grid.Column="0"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+        <StackPanel 
+            Orientation="Vertical"
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <Button
+                x:Name="btnSearch"
+                Click="btnSearch_Click"
+                Content="Search"
+                Margin="5"/>
+            <Button
+                x:Name="btnTake"
+                Click="btnTake_Click"
+                Content="Take--&gt;"
+                Width="60"
+                Margin="5"/>
+            <Button
+                x:Name="btnDrop"
+                Click="btnDrop_Click"
+                Content="&lt;--Drop"
+                Margin="5"/>
+            <Button
+                x:Name="btnForge"
+                Click="btnForge_Click"
+                Content="Forge"
+                Visibility="Collapsed"
+                Margin="5"/>
+        </StackPanel>
+
+        <ListBox
+            x:Name="lbxInventory"
+            Grid.Row="3"
+            Grid.Column="2"
+            Grid.RowSpan="3"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+        <Label
+            Content="Click on an option to travel in that direction:"
+            Grid.Row="4"
+            Grid.Column="0"/>
+
+        <ListBox
+            x:Name="lbxTravelOptions"
+            MouseDoubleClick="lbxTravelOptions_MouseDoubleClick"
+            Grid.Row="5"
+            Grid.Column="0"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+        <Label
+            Content="Game Status:"
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"/>
+
+        <ListBox
+            x:Name="lbxGameStatus"
+            Grid.Row="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+    </Grid>
+</Window>
